@@ -1,0 +1,19 @@
+{
+  "name": "midtermdecisionmaker",
+  "version": "1.0.0",
+  "description": "Hey guys, a test push!!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kylemcloughlin/midtermDecisionMaker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kylemcloughlin/midtermDecisionMaker/issues"
+  },
+  "homepage": "https://github.com/kylemcloughlin/midtermDecisionMaker#readme"
+}
