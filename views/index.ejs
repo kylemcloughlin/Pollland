@@ -7,6 +7,15 @@
 </head>
 <body>
   <% include ./partials/_header %>
-
+  <div class="container">
+    <h1 class="d-flex justify-content-center">Create your own Poll</h1>
+    <form class="form-inline d-flex justify-content-center">
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="inputEmail" class="sr-only">Email</label>
+        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+      </div>
+      <button type="submit" class="btn btn-primary mb-2">Create</button>
+    </form>
+  </div>
 </body>
 </html>
