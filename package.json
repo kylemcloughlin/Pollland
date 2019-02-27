@@ -17,7 +17,12 @@
   },
   "homepage": "https://github.com/kylemcloughlin/midtermDecisionMaker#readme",
   "dependencies": {
+<<<<<<< HEAD
     "ejs": "^2.6.1",
     "express": "^4.16.4"
+=======
+    "express": "^4.16.4",
+    "mailgun-js": "^0.22.0"
+>>>>>>> mailgunAPI
   }
 }
