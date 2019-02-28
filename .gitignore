@@ -2,6 +2,8 @@
 settings.json
 datafiles/
 
+package-lock.json
+
 # Logs
 logs
 *.log
