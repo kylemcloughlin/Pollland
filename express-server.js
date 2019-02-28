@@ -1,4 +1,4 @@
-const $ = require('jquery');
+// const $ = require('jquery');
 const express = require('express');
 const app = express();
 const PORT = 8080;
@@ -11,10 +11,6 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static( 'public'));
 app.set("view engine", "ejs");
-app.get()
-app.listen(PORT, () => {
-    console.log(`Example app listening on port ${PORT}!`);
-});
 
 //Function for generating a random string of letters and numbers
 function generateRandomString(length) {
