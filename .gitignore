@@ -1,3 +1,7 @@
+# DEVELOPMENT FILES
+settings.json
+datafiles/
+
 # Logs
 logs
 *.log

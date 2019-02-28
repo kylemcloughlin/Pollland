@@ -1,0 +1,40 @@
+#title {
+    /* color: aquamarine; */
+}
+
+#main {
+    width: 75%;
+    padding-left: 0%;
+    border: 2px solid;
+    margin-left: 13%;
+    height: -webkit-fill-available;
+    text-align: center;
+}
+
+#whatspolling {
+    margin-bottom: 2%;
+    width: 74%;
+}
+
+.pollinfo{
+    width: 93%;
+    border-radius: 6px;
+    border: solid;
+    margin-left: 3.5%;
+    margin-top: 2%;
+    height: 3em;
+}
+
+#subBut {
+    margin-left: 34%;
+    width: 30%;
+    margin-top: 6%;
+}
+.discriptionBut {
+    width: 23%;
+    margin-left: 3%;
+    border: 2px solid;
+    background-color: lightsteelblue;
+    border-radius: 5px;
+    margin-top: 1%;
+}
