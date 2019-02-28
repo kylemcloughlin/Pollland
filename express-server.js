@@ -27,17 +27,7 @@ app.get("/", (req, res) => {
 
 app.post("/poll/create", (req, res) => {
   // res.sendFile(path.join(__dirname + '/js/toggle.js'));
-  console.log(req.body);
-// knex('polldb')
-//   .insert([{ polloption: req.body.poll ,
-//                op1 : req.body.polloption_1,
-//             op1dis : req.body.polloption_1_discription
-//             op2 : req.body.polloption_2
-  
-  
-//           }]).finally(() => {
-//     knex.destroy();
-//   })
+  console.log(req.body.poll_email);
 
 res.redirect('/poll/create')
 });
@@ -57,3 +47,13 @@ app.listen(PORT, () => {
 });
 
 
+// knex('polldb')
+//   .insert([{ polloption: req.body.poll ,
+//                op1 : req.body.polloption_1,
+//             op1dis : req.body.polloption_1_discription
+//             op2 : req.body.polloption_2
+  
+  
+//           }]).finally(() => {
+//     knex.destroy();
+//   })
