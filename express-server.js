@@ -1,9 +1,12 @@
-const $ = require('jquery');
+const secrets = require("./jScript/secrets")
+console.log(secrets)
+var api_key = secrets.apikey;
+var domain = secrets.domain;
 const express = require('express');
 const app = express();
 const PORT = 8080;
 const bodyParser = require("body-parser");
-
+var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
 
 
 
@@ -11,7 +14,7 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({
   extended: true
 }));
-app.use(express.static( 'public'));
+app.use(express.static(__dirname + '/public'));
 app.set("view engine", "ejs");
 
 
@@ -23,16 +26,29 @@ app.get("/", (req, res) => {
 });
 
 
-
+// kylemcloughlin@icloud.com
 
 app.post("/poll/create", (req, res) => {
-  // res.sendFile(path.join(__dirname + '/js/toggle.js'));
-  console.log(req.body.poll_email);
+  // var data = {
+  //   from: 'kyle <kylemcloughlin1000@hotmail.ca>',
+  //   to: `${req.body.poll_email}`,
+  //   subject: 'Hello',
+  //   text: 'Testing some Mailgun awesomeness!'
+  // };
+  // mailgun.messages().send(data, function (error, body) {
+  //   if (error) {
+  //       console.log(error);
+  //   }
+  // });
 
-res.redirect('/poll/create')
+
+res.redirect('/poll/create/confirm')
 });
 
-
+app.get("/poll/create/confirm",(req, res)=> {
+console.log("/poll/create/confirm");
+  res.render("confimationpage")
+})
 
 app.get("/poll/create", (req, res) => {
   console.log('/poll/create/GET')
