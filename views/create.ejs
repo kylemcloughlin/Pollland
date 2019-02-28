@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+    <!-- internal css -->
+    <link rel="stylesheet" href="../css/layout.css" type="text/css" />
+
+    <!-- jquery cdm link -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous">
+    </script>
+
+    <script type="text/javascript" src="../js/toggle.js"></script>
+
+    <title>New Poll</title>
+
+
+</head>
+
+<body>
+    <% include ./partials/_header %>
+    <section id="main">
+        <h2 id="title">Create A Poll</h2>
+        <div id="form">
+            <form class="form-inline" action="/poll/create" method="POST">
+
+                <input class="pollinfo" type="text" name="poll" placeholder="whats on your mind?">
+
+
+                <input class="pollinfo" type="text" name="polloption_1" placeholder="option 1..">
+                <input id="discription1" class="pollinfo" type="text" name="polloption_1_discription" placeholder="discription..">
+                <button id="disBut1" class="discriptionBut" type="button">Discription</button>
+                <input class="pollinfo" type="text" name="polloption_2" placeholder="option 2..">
+                <input id="discription2" class="pollinfo" type="text" name="polloption_2_discription" placeholder="disctiption..">
+                <button id="disBut2" class="discriptionBut" type="button">discription</button>
+                <input class="pollinfo" type="text" name="polloption_3" placeholder="option 3..">
+                <input id="discription3" class="pollinfo" type="text" name="polloption_3_discription" placeholder="discription..">
+                <button id="disBut3" class="discriptionBut" type="button">discription</button>
+                <input class="pollinfo" type="text" name="polloption_4" placeholder="option 4..">
+                <input id="discription4" class="pollinfo" type="text" name="polloption_4__discription" placeholder="discription..">
+                <button id="disBut4" class="discriptionBut" type="button">discription</button>
+              <div id="submission"><input id="subBut" type="submit" class="btn btn-primary" value="submit"></div>
+
+            </form>
+        </div>
+    </section>
+</body>
+
+</html>
