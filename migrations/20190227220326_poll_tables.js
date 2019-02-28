@@ -2,11 +2,13 @@ exports.up = function(knex, Promise) {
   return Promise.all([
     knex.schema.createTable('voter', (table) => {
       table.increments('id').primary();
+      table.string('encrypted_id');
       table.string('email');
 
     }),
     knex.schema.createTable('question', (table) => {
       table.increments('id').primary();
+      table.string('encrypted_id');
       table.string('question');
       table.integer('creator_id');
       table.foreign('creator_id').references('voter.id');
@@ -33,9 +35,9 @@ exports.up = function(knex, Promise) {
 };
 exports.down = function(knex, Promise) {
   return Promise.all([
-    knex.schema.dropTable('question'),
+    knex.schema.dropTable('vote'),
     knex.schema.dropTable('option'),
-    knex.schema.dropTable('voter'),
-    knex.schema.dropTable('vote')
+    knex.schema.dropTable('question'),
+    knex.schema.dropTable('voter')
   ]);
 };
