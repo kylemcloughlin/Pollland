@@ -96,21 +96,12 @@ app.post("create/submit", (req, res) => {
 //         alert("You do not have acess to the resutls");
 //     }
 // });
-/*
---------RESULT---------
-*/
-// app.get("/poll/:pollID/results", (req,res) => {
-//   res.render('result');
-// });
-// /*
-// -----------------------
-// */
 
 
 
 
 
-// kylemcloughlin@icloud.com
+// kylemcloughlin@icloud.com test email associated with account
 
 
 app.post("/poll/create", (req, res) => {
@@ -140,6 +131,13 @@ app.get("/poll/create", (req, res) => {
 
    res.render('create');
  });//renders the create a poll page
+
+app.get("/poll/results", (req, res) => {
+
+  console.log('/poll/result')
+
+res.render('results') 
+})
 
 
 
