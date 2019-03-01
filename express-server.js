@@ -1,11 +1,11 @@
-const secrets = require("./jScript/secrets")
-console.log(secrets)
-var api_key = secrets.apikey;
-var domain = secrets.domain;
+// const secrets = require("./jScript/secrets")
+// console.log(secrets)
+// var api_key = secrets.apikey;
+// var domain = secrets.domain;
 const express = require('express');
 const app = express();
 const PORT = 8080;
-var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
+// var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
 
 
 

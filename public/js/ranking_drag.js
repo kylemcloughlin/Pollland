@@ -45,7 +45,7 @@ app.init = function() {
     // sortable option//
     $('ul.wishlist').sortable({
         connectWith: ".connected",
-        cursorAt: {top: 0, left: 130}
+        cursorAt: {top: 0, left: 20}
     });
     // nextInput: for (var k = 0; k < arr1.length; k++) {
     //     var str = arr1[k];
