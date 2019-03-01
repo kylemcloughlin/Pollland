@@ -1,24 +1,22 @@
+// Update with your config settings.
 const settings = require("./settings");
-
 module.exports = {
 
   development: {
-    client: 'pg',
-    connection: {
-      host: settings.hostname,
-      user: settings.user,
-      password: settings.password,
-      database: settings.database,
-      charset: 'utf8'
-    }
-  },
-
-  staging: {
-    client: 'pg',
+    client: 'postgresql',
     connection: {
       database: settings.database,
       user:     settings.user,
       password: settings.password
+    },
+  },
+
+  staging: {
+    client: 'postgresql',
+    connection: {
+      database: 'my_db',
+      user:     'username',
+      password: 'password'
     },
     pool: {
       min: 2,
@@ -30,11 +28,11 @@ module.exports = {
   },
 
   production: {
-    client: 'pg',
+    client: 'postgresql',
     connection: {
-      database: settings.database,
-      user:     settings.user,
-      password: settings.password
+      database: 'my_db',
+      user:     'username',
+      password: 'password'
     },
     pool: {
       min: 2,

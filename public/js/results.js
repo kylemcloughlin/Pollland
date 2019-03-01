@@ -1,4 +1,5 @@
 $(document).ready(function () {
+//    Chart.defaults.global.defaultFontFamily
     $('#pieChart').toggle();
     $('#polarChart').toggle();
     $('#radarChart').toggle();
@@ -10,10 +11,10 @@ $(document).ready(function () {
             labels: ['a', 'b', 'c', 'd'],
             datasets: [{
                 label: 'results',
-                data: [3,
-                    7,
-                    4,
-                    1
+                data: [25,
+                    25,
+                    25,
+                    25
 
                 ],
                 backgroundColor:[
@@ -39,9 +40,9 @@ $(document).ready(function () {
             labels: ['a', 'b', 'c', 'd'],
             datasets: [{
                 label: 'results',
-                data: [3,
-                    7,
-                    4,
+                data: [30,
+                    68,
+                    1,
                     1
 
                 ],
@@ -86,8 +87,12 @@ $(document).ready(function () {
                     'rgba(153, 102, 255, 0.6)',
                     'rgba(255, 159, 64, 0.6)',
                     'rgba(255, 99, 132, 0.6)'
-                ]
-            }]
+                ],
+                borderwidth:1,
+                borderColor: '#777',
+                hoverBorderWidth: 2,
+                hoverBorderColor: '#000'
+                        }]
 
         },
         options: {}
