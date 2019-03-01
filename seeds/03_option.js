@@ -6,45 +6,48 @@ exports.seed = function(knex, Promise) {
       // Inserts seed entries
       return knex('option').insert([
         {
-          id: 1,
+          // id: 1,
           question_id: 1,
           option: 'ROMA'
         },
         {
-          id: 2,
+          // id: 2,
           question_id: 1,
           option: 'VICE'
         },
         {
-          id: 3,
+          // id: 3,
           question_id: 1,
           option: 'BLACK PANTHER'
         },
         {
-          id: 4,
+          // id: 4,
           question_id: 1,
           option: 'BLACKkKLANSMAN'
         },
         {
-          id: 5,
+          // id: 5,
           question_id: 1,
           option: 'BOHEMIAN RHAPSODY'
         },
         {
-          id: 6,
+          // id: 6,
           question_id: 1,
           option: 'THE FAVOURITE'
         },
         {
-          id: 7,
+          // id: 7,
           question_id: 1,
           option: 'GREEN BOOK'
         },
         {
-          id: 8,
+          // id: 8,
           question_id: 1,
           option: 'A STAR IS BORN'
         }
       ]);
+    })
+    .finally( () => {
+      knex.raw('SELECT setval(\'option_id_seq\', (SELECT MAX(id) from option))');
     });
 };
