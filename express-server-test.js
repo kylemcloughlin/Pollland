@@ -1,12 +1,18 @@
 const PORT = 8080;
 const express = require('express');
+const ENV = 'development';
 const bodyParser = require("body-parser");
 
-const knex = require('knex')(knexConfig);
-
-const poll = require('/function_files')(knex);
+const knexConfig = require('./knexfile');
+const knex = require('knex')(knexConfig[ENV]);
+const poll = require('./lib/poll')(knex);
 
 const app = express();
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
+
 
 app.set('view engine', 'ejs');
 
@@ -20,10 +26,22 @@ app.set('view engine', 'ejs');
 
 
 /*
- * ROUTES d
+ * ROUTES
  */
 
 // HomePage
+app.get("/", (req, res) => {
+    res.render('index');
+});
+
+app.post("/getEmail", (req, res) => {
+    const email = req.body.email;
+
+    poll.saveEmail(email)
+        .then( (result) => {
+            res.json(result); // redirect to create poll page
+        })
+});
 
 
 
