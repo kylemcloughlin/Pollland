@@ -1,11 +1,11 @@
-const secrets = require("./jScript/secrets")
-console.log(secrets)
-var api_key = secrets.apikey;
-var domain = secrets.domain;
+// const secrets = require("./jScript/secrets")
+// console.log(secrets)
+// var api_key = secrets.apikey;
+// var domain = secrets.domain;
 const express = require('express');
 const app = express();
 const PORT = 8080;
-var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
+// var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
 
 
 
@@ -54,6 +54,7 @@ app.post("/", (req, res) => {
 //set question input to 'pollQ'
 //set friends list input to 'friends'
 //set friends msg input to 'msg'
+
 // //set form action to '/poll/create'
 // //set submit button to 'create/submit'
 // app.get("/poll/create", (req, res) => {
@@ -81,21 +82,31 @@ app.post("create/submit", (req, res) => {
 
 
 //set submit button with input '/poll/:pollID/confirm'
-// app.get("/poll/:pollID", (req, res) => {
-//     res.render('rank');
-// });
-// app.get("/poll/:pollID/confirm", (req, res) => {
-//     alert("data submitted");
-// });
-// app.get("/poll/:pollID/result", (req, res) => {
-//     //logic to check if user has access to the results
-//     if (true) {
-//         res.redirect('result');
-//     } else {
-//         alert("You do not have acess to the resutls");
-//     }
-// });
 
+app.get("/poll/:pollID", (req, res) => {
+    res.render('rank');
+});
+app.post("/poll/:pollID/rank", (req,res) => {
+    let tempArr = req.body.array;
+    const resultArr = tempArr.reverse();
+    console.log(resultArr);
+
+});
+app.get("/poll/:pollID/results", (req, res) => {
+    //logic to check if user has access to the results
+    console.log("im in");
+    if (true) {
+        var tempArr = {
+          array: resultArr,
+        }
+        res.render(`results`, tempArr);
+    } else {
+        console.log("You do not have acess to the resutls");
+    }
+});
+/*
+-----------------------
+*/
 
 
 

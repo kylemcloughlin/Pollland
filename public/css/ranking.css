@@ -1,0 +1,50 @@
+ul.rank {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+ul.wishlist {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+body {
+    margin: 0;
+}
+main {
+    width: 90%;
+    background-color: #d2dbe0;
+}
+.heading {
+    font-size: 30px;
+    text-align: center;
+}
+table {
+    margin: 0 auto;
+    width: 30%;
+    margin: 0 auto;
+    border-radius: 5px;
+    border: 1px solid grey;
+}
+
+#submit {
+  text-align: center;
+}
+
+li {
+  width: 100%;
+}
+
+button {
+    margin: 10px;
+    width: 75px;
+
+}
+
+button:hover {
+    background-color: grey;
+}
+
+#result {
+    text-align: center;
+}
