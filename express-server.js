@@ -61,7 +61,7 @@ app.get("/poll/create", (req, res) => {
         friendsList: friendsList,
         message: friendsMsg
     }
-    res.render('create');
+    res.render('create', tempVar);
 });
 app.get("/poll/create/add", (req, res) => {
     //adds a new slot to add a new option option (or perhaps will be done in a .js file)
@@ -83,22 +83,23 @@ app.get("/poll/create/confirm", (req, res) => {
 app.get("/poll/:pollID", (req, res) => {
     res.render('rank');
 });
-app.get("/poll/:pollID/confirm", (req, res) => {
-    alert("data submitted");
+app.post("/poll/:pollID/rank", (req,res) => {
+    let tempArr = req.body.array;
+    const resultArr = tempArr.reverse();
+    console.log(resultArr);
+
 });
-app.get("/poll/:pollID/result", (req, res) => {
+app.get("/poll/:pollID/results", (req, res) => {
     //logic to check if user has access to the results
+    console.log("im in");
     if (true) {
-        res.redirect('result');
+        var tempArr = {
+          array: resultArr,
+        }
+        res.render(`results`, tempArr);
     } else {
-        alert("You do not have acess to the resutls");
+        console.log("You do not have acess to the resutls");
     }
-});
-/*
---------RESULT---------
-*/
-app.get("/poll/:pollID/results", (req,res) => {
-  res.render('result');
 });
 /*
 -----------------------

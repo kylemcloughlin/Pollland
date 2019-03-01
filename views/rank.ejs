@@ -16,32 +16,42 @@
             </meta>
         </meta>
     </head>
-    <body>
-        <div class="wrapper clearfix">
-            <form class="item">
-                <input class="input" name="itemName" placeholder="Place to visit" type="text">
-                    <input class="submit" type="submit" value="Add to list">
-                        <div class="label">
-                            <label for="heading">
-                                <input class="heading" id="ckeckbox" name="heading" type="checkbox">
-                                    Check to create a new heading
-                                    <p>
-                                        Rank the items in the list
-                                    </p>
-                                </input>
-                            </label>
-                        </div>
-                    </input>
-                </input>
-            </form>
-            <ul class="wishlist connected">
-                <li class="heading">
-                    This Year
-                </li>
-                <div class = "itemList">
-                  <!-- add new list based on amount lists user created -->
-                </div>
-            </ul>
+    <body id="body">
+        <% include ./partials/_header.ejs %>
+        <div class="wrapper">
+            <h1 class="heading">
+                Your options
+            </h1>
+            <table>
+                <tr class="table">
+                    <th class="headers">
+                        Rank
+                    </th>
+                    <th class="headers">
+                        Options
+                    </th>
+                </tr>
+                <tr class="table">
+                    <th>
+                        <ul class="rank">
+                        </ul>
+                    </th>
+                    <th>
+                        <ul class="wishlist connected" id="ul1">
+                        </ul>
+                    </th>
+                </tr>
+            </table>
+        </div>
+        <div id="submit">
+            <button id="makeNewArray">
+                Submit
+            </button>
+        </div>
+        <div id="result">
+            <button id="seeResult">
+                Result
+            </button>
         </div>
     </body>
 </html>
