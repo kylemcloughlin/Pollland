@@ -1,6 +1,9 @@
 # DEVELOPMENT FILES
+.DS_Store
 settings.json
 datafiles/
+
+
 
 # Logs
 logs
