@@ -37,16 +37,6 @@ app.get('/', (req, res) => {
 app.post('/getEmail', (req, res) => {
     const email = req.body.email;
 
-    // poll.saveEmail(email)
-    //     .then( () => {
-    //         poll.getVoterBy('email', email)
-    //             .then((result) => {
-    //                 // obj with voter filter by email
-    //                 let voterRow = result;
-    //                 // redirect to create poll
-    //                 res.json(voterRow);
-    //             })
-    //     })
     valueObj = {
         email: email,
         encrypted_id: poll.generateRandomString(6)
