@@ -1,7 +1,10 @@
 # DEVELOPMENT FILES
+.DS_Store
 settings.json
 datafiles/
 package-lock.json
+
+
 
 # Logs
 logs
