@@ -38,3 +38,13 @@
     border-radius: 5px;
     margin-top: 1%;
 }
+
+.errorBanner {
+    width: 94%;
+    border: 2px solid salmon;
+    margin-left: 3%;
+    margin-top: 2%;
+    border-radius: 6px;
+    background-color: #ff0f0f36;
+}
+}

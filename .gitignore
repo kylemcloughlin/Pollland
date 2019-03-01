@@ -2,8 +2,12 @@
 .DS_Store
 settings.json
 datafiles/
+<<<<<<< HEAD
 package-lock.json
 
+=======
+functiontesting.js
+>>>>>>> modularity
 
 
 # Logs
