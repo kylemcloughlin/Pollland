@@ -1,40 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+            <!-- External CSS -->
+            <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet">
 
-<head>
-    <meta charset="UTF-8">
+            <!-- APP CSS -->
+            <link rel="stylesheet" href="/css/style.css" type="text/css" />
+            <link rel="stylesheet" href="/css/confrim.css" type="text/css" />
+            <link rel="stylesheet" href="/css/layout.css" type="text/css" />
 
+            <!-- jquery cdm link -->
+            <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous">
+            </script>
+            <!-- <script type="text/javascript" src="/js/toggle.js"></script> -->
+            <script type="text/javascript" src="/js/create_poll.js"></script>
 
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-        crossorigin="anonymous">
-    <!-- internal css -->
-    <link rel="stylesheet" href="/css/confrim.css" type="text/css" />
-    <link rel="stylesheet" href="/css/layout.css" type="text/css" />
-
-    <!-- jquery cdm link -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous">
-    </script>
-
-    <script type="text/javascript" src="/js/toggle.js"></script>
-
-    <title>New Poll</title>
-
-
-</head>
+            <title>
+                New Poll
+            </title>
+        </meta>
+    </head>
 
 <body>
     <% include ./partials/_header %>
-    <section id="main">
+    <div class="container my-5">
+        <div class="row justify-content-md-center">
+            <div class="col col-lg-12">
+            <form action="/poll/create" method="POST">
+                <h3 class="m-auto">CREATE YOUR POLL</h3>
+                <div class="form-group my-3">
+                    <h6>QUESTION</h6>
+                    <input type="text" class="form-control" name="poll" id="pollTopic" placeholder="What's on your mind?">
+                </div>
+                <h6>OPTIONS</h6>
+                <div class="input-group control-group my-2">
+                  <input type="text" name="addmore[]" class="form-control col-lg-4" placeholder="Option">
+                  <input type="text" name="addmore[]" class="form-control col-lg-8" placeholder="Description (optional)">
+                </div>
+
+                <div class="input-group control-group after-add-more">
+                  <input type="text" name="addmore[]" class="form-control col-lg-4" placeholder="Option">
+                  <input type="text" name="addmore[]" class="form-control col-lg-8" placeholder="Description (optional">
+                  <div class="input-group-btn">
+                    <button class="btn btn-warning add-more" type="button"><strong>+</strong></button>
+                  </div>
+                </div>
+        </form>
+            </div>
+        </div>
+    </div>
+
+<!--     <section id="main">
         <h2 id="title">Create A Poll</h2>
         <div id="form">
             <form class="form-inline" action="/poll/create" method="POST">
-                <div id="error1" class="errorBanner"><p>WHOOPS, you've forgotten to enter a topic for your poll!</p></div>
+                <div id="error1" class="errorBanner"><p>WHOOPS, you've forgotten to enter a topic for your poll!</p>
+                </div>
 
                 <input id="pollTopic" class="pollinfo" type="text" name="poll" placeholder="whats on your mind?">
 
-                <div id="error2" class="errorBanner"><p>OPPS, you need to include at least 2 options for you poll!</p></div>
+                <div id="error2" class="errorBanner"><p>OPPS, you need to include at least 2 options for you poll!</p>
+                </div>
 
                 <input id="option1" class="pollinfo" type="text" name="polloption_1" placeholder="option 1..">
                 <input id="discription1" class="pollinfo" type="text" name="polloption_1_discription" placeholder="discription..">
@@ -48,14 +76,14 @@
                 <input class="pollinfo" type="text" name="polloption_4" placeholder="option 4..">
                 <input id="discription4" class="pollinfo" type="text" name="polloption_4__discription" placeholder="discription..">
                 <button id="disBut4" class="discriptionBut" type="button">discription</button>
-                
+
                 <input id="inputEmail" type="email" class="pollinfo" placeholder="your @ here!" name="poll_email">
                 <input id="subBut" type="submit" class="btn btn-primary" value="submit">
                 <div id="error3" class="errorBanner"><p>WAIT!! you fogot to include an email addresses!</p></div>
 
             </form>
         </div>
-    </section>
+    </section> -->
 </body>
 
 </html>
