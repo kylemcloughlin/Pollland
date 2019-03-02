@@ -1,0 +1,33 @@
+/* Define default Font to 'Noto Sans' */
+* {
+ font-family: 'Noto Sans', sans-serif;
+}
+
+.navbar-brand {
+  margin: auto;
+}
+
+.logo-img {
+  width: 50px;
+  height: 50px;
+}
+
+.logo-txt {
+  display: inline;
+  position: absolute;
+  padding: 2px;
+  color: #000;
+}
+
+.backgroundLanding {
+    background-color: #fafafa;
+    background-image: url(../img/poll_bg.png);
+    background-size: cover;
+    height: 90vh;
+}
+
+.banner-text {
+  color: black;
+  font-size: 3em;
+  font-weight:bold;
+}
