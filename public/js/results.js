@@ -1,5 +1,10 @@
+// const knexConfig = require('./knexfile');
+// const knex = require('knex')(knexConfig[ENV]);
+// const poll = require('./lib/poll')(knex);
+
+
 $(document).ready(function () {
-//    Chart.defaults.global.defaultFontFamily
+
     $('#pieChart').toggle();
     $('#polarChart').toggle();
     $('#radarChart').toggle();
@@ -24,7 +29,12 @@ $(document).ready(function () {
                     'rgba(153, 102, 255, 0.6)',
                     'rgba(255, 159, 64, 0.6)',
                     'rgba(255, 99, 132, 0.6)'
-                ]
+                ],
+                borderwidth:1,
+                borderColor: '#777',
+                hoverBorderWidth: 2,
+                hoverBorderColor: '#000'
+                        
             }]
 
         },
@@ -53,7 +63,12 @@ $(document).ready(function () {
                     'rgba(153, 102, 255, 0.6)',
                     'rgba(255, 159, 64, 0.6)',
                     'rgba(255, 99, 132, 0.6)'
-                ]
+                ],
+                borderwidth:1,
+                borderColor: '#777',
+                hoverBorderWidth: 2,
+                hoverBorderColor: '#000'
+                        
 
 
 
@@ -120,7 +135,12 @@ $(document).ready(function () {
                     'rgba(153, 102, 255, 0.6)',
                     'rgba(255, 159, 64, 0.6)',
                     'rgba(255, 99, 132, 0.6)'
-                ]
+                ],
+                borderwidth:1,
+                borderColor: '#777',
+                hoverBorderWidth: 2,
+                hoverBorderColor: '#000'
+                        
             }]
 
         },
@@ -149,7 +169,12 @@ $(document).ready(function () {
                     'rgba(153, 102, 255, 0.6)',
                     'rgba(255, 159, 64, 0.6)',
                     'rgba(255, 99, 132, 0.6)'
-                ]
+                ],
+                borderwidth:1,
+                borderColor: '#777',
+                hoverBorderWidth: 2,
+                hoverBorderColor: '#000'
+                        
             }]
 
         },

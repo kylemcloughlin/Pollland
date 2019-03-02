@@ -2,31 +2,45 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
+            <!-- External CSS -->
             <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet">
+
+            <!-- APP CSS -->
+            <link rel="stylesheet" href="/css/style.css" type="text/css" />
+
                 <title>
-                    Document
+                    Polland - Decision Maker
                 </title>
             </link>
         </meta>
     </head>
     <body>
         <% include ./partials/_header %>
-        <div class="container">
-            <h1 class="d-flex justify-content-center">
-                Create your own Poll
-            </h1>
-            <form action="/getEmail" class="form-inline d-flex justify-content-center" method="POST">
-                <div class="form-group mx-sm-3 mb-2">
-                    <label class="sr-only" for="inputEmail">
-                        Email
-                    </label>
-                    <input class="form-control" id="inputEmail" name="email" placeholder="Email" type="email">
-                    </input>
-                </div>
-                <button class="btn btn-primary mb-2" type="submit">
-                    Create
-                </button>
-            </form>
+        <div class="backgroundLanding d-flex align-items-center">
+            <div class="container-fluid">
+                <h1 class="d-flex justify-content-center font-weight-bold">
+                    SOME FUNNY TEXT ABOUT
+                </h1>
+                <h1 class="d-flex justify-content-center banner-text">
+                    POLLAND
+                </h1>
+                <h3 class="d-flex justify-content-center">
+                    How Works?
+                </h3>
+                <form action="/getEmail" class="form-inline d-flex justify-content-center" method="POST">
+                    <div class="form-group mx-sm-3 mb-2">
+                        <label class="sr-only" for="inputEmail">
+                            Email
+                        </label>
+                        <input class="form-control" id="inputEmail" name="email" placeholder="Email" type="email">
+                        </input>
+                    </div>
+                    <button class="btn btn-warning mb-2" type="submit">
+                        <strong>Create</strong>
+                    </button>
+                </form>
+            </div>
         </div>
     </body>
 
