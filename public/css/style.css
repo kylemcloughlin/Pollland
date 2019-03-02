@@ -17,5 +17,17 @@
   position: absolute;
   padding: 2px;
   color: #000;
+}
 
+.backgroundLanding {
+    background-color: #fafafa;
+    background-image: url(../img/poll_bg.png);
+    background-size: cover;
+    height: 90vh;
+}
+
+.banner-text {
+  color: black;
+  font-size: 3em;
+  font-weight:bold;
 }
