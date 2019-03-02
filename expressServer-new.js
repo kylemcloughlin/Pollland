@@ -1,10 +1,7 @@
-<<<<<<< HEAD
-=======
 const PORT = 8080;
 const express = require('express');
 const ENV = 'development';
 const bodyParser = require("body-parser");
-const mailGun = require("./jScript/mailGun.js");
 
 const knexConfig = require('./knexfile');
 const knex = require('knex')(knexConfig[ENV]);
@@ -23,15 +20,42 @@ app.set('view engine', 'ejs');
 /*
  * MIDDLEWARE
  */
+app.get("/poll/data/1", (req, res) => {
+    poll.getPoints(1)
+    .then( (result) => {
+         res.send(res.json(result));
+        })
+       
+    // res.send(res.json(data));
+})
 
-
-
+app.get("/poll/result", (req, res) => {
+    console.log('/poll/result')
+    // let questionID = req.params.questionID;
+    
+    poll.getPoints(1)
+            .then( (result) => {
+                 res.send(json(result));
+                })
+                    
+        res.render('results');
+});
+    
 
 
 /*
- * ROUTES
- */
+* ROUTES
+*/
 
+// app.get('/poll/result', (req, res) => {
+//     let questionID = req.params.questionID;
+
+//     poll.getPoints(questionID)
+//         .then( (result) => {
+//             res.json(result)
+//         })
+// // res.render('results')
+// })
 // HomePage
 app.get('/', (req, res) => {
     res.render('index');
@@ -39,8 +63,7 @@ app.get('/', (req, res) => {
 
 app.post('/getEmail', (req, res) => {
     const email = req.body.email;
-    console.log(email);
-    // mailGun.sendTheMail(email, "your mama is fat");
+
     valueObj = {
         email: email,
         encrypted_id: poll.generateRandomString(6)
@@ -79,12 +102,6 @@ app.post('/HERE_YOUR_POST_FORM', (req, res) => {
         })
 })
 
-app.post("/poll/create", (req, res) => {
-    mailGun.sendTheMail(creatoremail, `check this link: <a href='${link that leads to results}'>link</a>`);
-    mailGun.sendTheMail(listOfEmails, `check this link: <a href='${link that leads ranking}'>link</a>`);
-    redirect('confirm');
-});
-
 
 // Poll Confirm
 app.post("create/submit", (req, res) => {
@@ -99,34 +116,25 @@ app.get("/poll/:pollID", (req, res) => {
 });
 app.post("/poll/:pollID/rank", (req,res) => {
     let tempArr = req.body.array;
-    res.resultArr = tempArr.reverse();
+    const resultArr = tempArr.reverse();
     console.log(resultArr);
-    next();
 
 });
-app.get("/poll/:pollID/results", (req, res) => {
-    //logic to check if user has access to the results
-    console.log("im in");
-    if (true) {
-        var dataArr = {
-          array: resultArr,
-        }
-        res.render(`results`, dataArr);
-    } else {
-        console.log("You do not have acess to the resutls");
-    }
-});
+// app.get("/poll/results", (req, res) => {
+//     //logic to check if user has access to the results
+//     console.log("im in");
+//     if (true) {
+//         var tempArr = {
+//           array: resultArr,
+//         }
+//         res.render(`results`, tempArr);
+//     } else {
+//         console.log("You do not have acess to the resutls");
+//     }
+// });
 
 
 // Poll Results
-app.get('/poll/:questionID/result', (req, res) => {
-    let questionID = req.params.questionID;
-
-    poll.getPoints(questionID)
-        .then( (result) => {
-            res.json(result)
-        })
-})
 
 
 
@@ -134,4 +142,3 @@ app.get('/poll/:questionID/result', (req, res) => {
 app.listen(PORT, () => {
   console.log('App listening on port ' + PORT);
 });
->>>>>>> 17a86fb4f38a5b8ddd2863df44dd8dd71e56cbf3

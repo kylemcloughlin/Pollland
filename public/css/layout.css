@@ -27,14 +27,14 @@
 
 #subBut {
     margin-left: 34%;
-    width: 30%;
+    /* width: 30%; */
     margin-top: 6%;
 }
 .discriptionBut {
     width: 23%;
     margin-left: 3%;
-    border: 2px solid;
-    background-color: lightsteelblue;
+    border: 2px solid #ffc107;
+    background-color: #ffc107;
     border-radius: 5px;
     margin-top: 1%;
 }
@@ -47,4 +47,15 @@
     border-radius: 6px;
     background-color: #ff0f0f36;
 }
+
+.btn-primary {
+    color: #212529;
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+body {
+    color: #FFC106;
+}
+#submitDiv {
+    width: 94%;  
 }

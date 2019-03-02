@@ -3,6 +3,8 @@ $(document).ready(function () {
     $("#discription2").toggle();
     $("#discription3").toggle();
     $("#discription4").toggle();
+    $("#inputEmail2").toggle();
+    $("#inputEmail3").toggle();
 
     $("#disBut1").click(function () {
         $("#discription1").slideDown();
@@ -30,6 +32,14 @@ $(document).ready(function () {
         $("#disBut4").slideUp();
         var input = document.getElementById('discription');
         input.select();
+
+    });
+    $("#emailButt").click(function () {
+        $("#inputEmail2").slideDown();
+        $("#inputEmail3").slideDown();
+        $("#emailButt").slideUp();
+        // var input = document.getElementById('discription');
+        // input.select();
 
     });
 
