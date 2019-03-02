@@ -2,6 +2,7 @@ const PORT = 8080;
 const express = require('express');
 const ENV = 'development';
 const bodyParser = require("body-parser");
+const mailGun = require("./jScript/mailGun.js");
 
 const knexConfig = require('./knexfile');
 const knex = require('knex')(knexConfig[ENV]);
@@ -36,7 +37,8 @@ app.get('/', (req, res) => {
 
 app.post('/getEmail', (req, res) => {
     const email = req.body.email;
-
+    console.log(email);
+    // mailGun.sendTheMail(email, "your mama is fat");
     valueObj = {
         email: email,
         encrypted_id: poll.generateRandomString(6)
@@ -75,6 +77,12 @@ app.post('/HERE_YOUR_POST_FORM', (req, res) => {
         })
 })
 
+app.post("/poll/create", (req, res) => {
+    mailGun.sendTheMail(creatoremail, `check this link: <a href='${link that leads to results}'>link</a>`);
+    mailGun.sendTheMail(listOfEmails, `check this link: <a href='${link that leads ranking}'>link</a>`);
+    redirect('confirm');
+});
+
 
 // Poll Confirm
 app.post("create/submit", (req, res) => {
@@ -92,7 +100,6 @@ app.post("/poll/:pollID/rank", (req,res) => {
     res.resultArr = tempArr.reverse();
     console.log(resultArr);
     next();
-
 
 });
 app.get("/poll/:pollID/results", (req, res) => {

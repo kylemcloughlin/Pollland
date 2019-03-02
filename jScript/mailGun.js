@@ -1,21 +1,45 @@
-
 const secrets = require("./secrets");
-console.log(secrets)
-var api_key = secrets.apikey;
-var domain = secrets.domain;
-
-var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
-
-var data = {
-  from: 'kyle <kylemcloughlin1000@hotmail.ca>',
-  to: 'kylemcloughlin@icloud.com',
-  subject: 'Hello',
-  text: 'Testing some Mailgun awesomeness!'
-};
-
-mailgun.messages().send(data, function (error, body) {
-  if (error) {
-      console.log(error);
-  }
-    console.log(body);
+var email = secrets.email;
+var pass = secrets.pass;
+var nodemailer = require('nodemailer');
+var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: email,
+        pass: pass
+    }
 });
+// // const recipients = ["laviionas772@gmail.com", "lavi.ionas@gmail.com"];
+// module.exports = function() {
+//     function sendTheMail(recipients) {
+//         const mailOptions = {
+//             from: 'lavi.ionas@gmail.com', // sender address
+//             to: recipients, // list of receivers
+//             subject: 'Subject of your email', // Subject line
+//             html: '<p>Your html here</p>' // plain text body
+//         };
+//         transporter.sendMail(mailOptions, function(err, info) {
+//             if (err) console.log(err)
+//             else console.log(info);
+//         });
+//     }
+//     return {
+//       sendTheMail: sendTheMail
+//     }
+// }
+
+
+module.exports = {
+  sendTheMail: function (recipients, text) {
+        const mailOptions = {
+            from: 'lavi.ionas@gmail.com', // sender address
+            to: recipients, // list of receivers
+            subject: 'Subject of your email', // Subject line
+            text: text // plain text body
+        };
+        transporter.sendMail(mailOptions, function(err, info) {
+            if (err) console.log(err)
+            else console.log(info);
+        });
+    }
+}
