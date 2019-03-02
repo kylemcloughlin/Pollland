@@ -91,18 +91,20 @@ app.get("/poll/:pollID", (req, res) => {
 });
 app.post("/poll/:pollID/rank", (req,res) => {
     let tempArr = req.body.array;
-    const resultArr = tempArr.reverse();
+    res.resultArr = tempArr.reverse();
     console.log(resultArr);
+    next();
+
 
 });
 app.get("/poll/:pollID/results", (req, res) => {
     //logic to check if user has access to the results
     console.log("im in");
     if (true) {
-        var tempArr = {
+        var dataArr = {
           array: resultArr,
         }
-        res.render(`results`, tempArr);
+        res.render(`results`, dataArr);
     } else {
         console.log("You do not have acess to the resutls");
     }

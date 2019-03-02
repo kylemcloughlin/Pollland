@@ -24,42 +24,21 @@ const data = {
     },
 }
 var createOptions = function(data) {
-    // const {
-    //     id,
-    //     text
-    // } = data;
-    //console.log("create options called");
     for (var x = 1; x < numberOfOptions + 1; x++) {
         var li = $('<li>' + data[x].text + '</li>');
         var rank = $('<li>' + data[x].id + '</li>');
         $('ul.wishlist').append(li);
         $('.rank').append(rank);
     }
-    //console.log(obj);
-    // return listContainer;
+
 }
-// var renderOptions = function(data) {
-//     $('.itemList').append(createOptions(data));
-// }
+
 app.init = function() {
     // sortable option//
     $('ul.wishlist').sortable({
         connectWith: ".connected",
         cursorAt: {top: 0, left: 20}
     });
-    // nextInput: for (var k = 0; k < arr1.length; k++) {
-    //     var str = arr1[k];
-    //     for (var l = 0; l < result.length; l++) {
-    //         if (result[l] == str) continue nextInput;
-    //     }
-    //     result.push(str);
-    // }
-    var resultBtn = document.getElementById('seeResult');
-    resultBtn.onclick = function() {
-      console.log("clicked");
-        // $.post("/poll/pollID/result");
-        window.location.href = "/poll/pollID/results";
-    }
 
     var btn = document.getElementById('makeNewArray')
     btn.onclick = function() {
