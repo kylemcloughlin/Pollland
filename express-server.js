@@ -83,6 +83,52 @@ app.post("create/submit", (req, res) => {
 
 //set submit button with input '/poll/:pollID/confirm'
 
+/*
+-----------------------
+*/
+
+
+
+
+// kylemcloughlin@icloud.com test email associated with account
+
+
+app.post("/poll/create", (req, res) => {
+  console.log(req.body);
+  var data = {
+    from: 'kyle <kylemcloughlin1000@hotmail.ca>',
+    to: `${req.body.poll_email}`,
+    subject: 'Hello',
+    text: 'Testing some Mailgun awesomeness!'
+  };
+  mailgun.messages().send(data, function (error, body) {
+    if (error) {
+      console.log(error);
+    }
+  });
+  
+  
+  res.redirect('/poll/create/confirm')
+});
+
+app.get("/poll/create/confirm",(req, res)=> {
+  console.log("/poll/create/confirm");
+  res.render("confimationpage")
+})
+
+app.get("/poll/create", (req, res) => {
+  console.log('/poll/create/GET')
+  
+  res.render('create');
+});//renders the create a poll page
+
+app.get("/poll/results", (req, res) => {
+  
+  console.log('/poll/result')
+  
+  res.render('results')
+})
+
 app.get("/poll/:pollID", (req, res) => {
     res.render('rank');
 });
@@ -104,52 +150,6 @@ app.get("/poll/:pollID/results", (req, res) => {
         console.log("You do not have acess to the resutls");
     }
 });
-/*
------------------------
-*/
-
-
-
-
-// kylemcloughlin@icloud.com test email associated with account
-
-
-app.post("/poll/create", (req, res) => {
- console.log(req.body);
-  var data = {
-    from: 'kyle <kylemcloughlin1000@hotmail.ca>',
-    to: `${req.body.poll_email}`,
-    subject: 'Hello',
-    text: 'Testing some Mailgun awesomeness!'
-  };
-  mailgun.messages().send(data, function (error, body) {
-    if (error) {
-        console.log(error);
-    }
-  });
-
-
-res.redirect('/poll/create/confirm')
-});
-
-app.get("/poll/create/confirm",(req, res)=> {
-console.log("/poll/create/confirm");
-  res.render("confimationpage")
-})
-
-app.get("/poll/create", (req, res) => {
-  console.log('/poll/create/GET')
-
-   res.render('create');
- });//renders the create a poll page
-
-app.get("/poll/results", (req, res) => {
-
-  console.log('/poll/result')
-
-res.render('results')
-})
-
 
 
 app.listen(PORT, () => {
@@ -165,16 +165,16 @@ app.listen(PORT, () => {
 
 
 //           }]).finally(() => {
-//     knex.destroy();
-//   })
-
-// { poll: 'polltopic',
-// polloption_1: 'option1',
-// polloption_1_discription: 'discription1',
-// polloption_2: 'option2',
-// polloption_2_discription: 'dis2',
-// polloption_3: 'opt3',
-// polloption_3_discription: 'discription3',
-// polloption_4: 'op4',
-// polloption_4__discription: 'dis4',
-// poll_email: 'kylemcloughlin@icloud.com' }
+  //     knex.destroy();
+  //   })
+  
+  // { poll: 'polltopic',
+  // polloption_1: 'option1',
+  // polloption_1_discription: 'discription1',
+  // polloption_2: 'option2',
+  // polloption_2_discription: 'dis2',
+  // polloption_3: 'opt3',
+  // polloption_3_discription: 'discription3',
+  // polloption_4: 'op4',
+  // polloption_4__discription: 'dis4',
+  // poll_email: 'kylemcloughlin@icloud.com' }
