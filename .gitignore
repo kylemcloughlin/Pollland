@@ -8,7 +8,7 @@ express-server-test-Lavi.js
 express-server-weihan.js
 secrets.json
 
-# Logs
+# logs
 logs
 *.log
 npm-debug.log*
