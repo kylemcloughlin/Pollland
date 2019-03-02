@@ -1,11 +1,7 @@
 # DEVELOPMENT FILES
 .DS_Store
 settings.json
-secrets.json
 datafiles/
-
-package-lock.json
-
 
 
 
