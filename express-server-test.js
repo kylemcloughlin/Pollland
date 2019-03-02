@@ -66,9 +66,14 @@ app.get("/poll/create/confirm", (req, res) => {
 // Create Poll
 app.get('/create/:voterID', (req, res) => {
     let voterID = req.params.voterID;
+    // poll.getVoterBy('id', voterID)
+    //     .then((result) => {
+    //         let voterRow = result;
+    //         res.json(voterRow);
+    // })
     poll.getVoterBy('id', voterID).then((result) => {
         let voterRow = result;
-        res.json(voterRow);
+        res.render('create')
     })
 });
 app.get('/poll/:questionID/result', (req, res) => {
@@ -99,7 +104,6 @@ app.post("/poll/:pollID/rank", (req, res) => {
     const resultArr = tempArr.reverse();
     console.log(resultArr);
 });
-
 /*
 s
 s
