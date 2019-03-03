@@ -16,6 +16,7 @@
             </script>
             <!-- <script type="text/javascript" src="/js/toggle.js"></script> -->
             <script type="text/javascript" src="/js/create_poll.js"></script>
+            <!-- <script type="text/javascript" src="bootstrap-validate.js"></script> -->
 
             <title>
                 New Poll
@@ -30,21 +31,21 @@
         <div class="row justify-content-md-center">
             <div class="col col-lg-12">
                 <h3 class="m-auto">CREATE YOUR POLL</h3>
-                <form action="/pollcreate" method="POST">
+                <form action="/pollcreate/<%= creatorID %>" method="POST">
 
                     <div class="form-group my-3">
                         <h6>QUESTION</h6>
-                        <input type="text" class="form-control" name="pollquestion" id="pollTopic" placeholder="What's on your mind?">
+                        <input type="text" id="input" class="form-control" name="pollquestion" id="pollTopic" placeholder="What's on your mind?">
                     </div>
 
                     <h6>OPTIONS</h6>
                     <div class="input-group control-group my-2">
-                        <input type="text" name="poll_opt" class="form-control col-lg-4" placeholder="Option">
+                        <input type="text" name="poll_opt" id="input" class="form-control col-lg-4 mr-1" placeholder="Option">
                         <input type="text" name="opt_des" class="form-control col-lg-8" placeholder="Description (optional)">
                     </div>
 
                     <div class="input-group control-group after-add-more">
-                        <input type="text" name="poll_opt" class="form-control col-lg-4" placeholder="Option">
+                        <input type="text" name="poll_opt" id="input" class="form-control col-lg-4 mr-1" placeholder="Option">
                         <input type="text" name="opt_des" class="form-control col-lg-8" placeholder="Description (optional">
                         <div class="input-group-btn">
                             <button class="btn btn-warning add-more" type="button"><strong>+</strong></button>
@@ -54,13 +55,15 @@
                     <div class="input-group justify-content-md-center my-4">
                         <h4>FRIENDS</h4>
                         <div class="input-group email-group justify-content-md-center after-add-more-friend my-2">
-                            <input type="email" name="send_to" class="form-control col-lg-4" placeholder="Email">
+                            <input type="email" name="send_to" id="input" class="form-control col-lg-4" placeholder="Email">
                             <div class="input-group-btn">
                                 <button class="btn btn-warning add-more-friend" type="button"><strong>+</strong></button>
                             </div>
                         </div>
                     </div>
-
+<!--                     <script>
+                        bootstrapValidate('#input', 'email:Enter a valid email address');
+                    </script> -->
                     <div class="form-group">
                         <div class="justify-content-md-center m-auto">
                             <button type="submit" class="btn btn-warning float-right">Submit</button>

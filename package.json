@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/kylemcloughlin/midtermDecisionMaker#readme",
   "dependencies": {
+    "bootstrap-validate": "^2.1.3",
     "chart.js": "^2.7.3",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
