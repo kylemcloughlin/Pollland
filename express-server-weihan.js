@@ -66,12 +66,16 @@ app.get('/create/:voterID', (req, res) => {
         })
 });
 
-app.post('/HERE_YOUR_POST_FORM', (req, res) => {
-    let table;
-    let valueObj;
+app.post('/pollcreate', (req, res) => {
+    // let table;
+    // let valueObj;
+    console.log('emails: ', req.body.send_to)
+    console.log('question: ', req.body.pollquestion)
+    console.log('option: ', req.body.poll_opt)
+    console.log('description: ', req.body.opt_des)
     poll.insertToDatabase(table, valueObj)
         .then( () => {
-            res.redirect()
+            res.send('OK')
         })
 })
 
