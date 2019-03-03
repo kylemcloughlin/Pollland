@@ -2,6 +2,8 @@ const PORT = 8080;
 const express = require('express');
 const ENV = 'development';
 const bodyParser = require("body-parser");
+const mailGun = require("./jScript/mailGun.js");
+
 
 const knexConfig = require('./knexfile');
 const knex = require('knex')(knexConfig[ENV]);
@@ -48,7 +50,7 @@ app.post('/getEmail', (req, res) => {
                     // obj with voter filter by email
                     let voterRow = result;
                     // redirect to create poll
-                    res.json(voterRow);
+                    res.redirect('/create/' + voterRow.id)
                 })
         })
 });
@@ -56,23 +58,130 @@ app.post('/getEmail', (req, res) => {
 
 
 // Create Poll
-app.get('/create/:voterID', (req, res) => {
-    let voterID = req.params.voterID;
+app.get('/create/:creatorID', (req, res) => {
+    let creatorID = req.params.creatorID;
 
-    poll.getVoterBy('id', voterID)
+    poll.getVoterBy('id', creatorID)
         .then( (result) => {
             let voterRow = result;
-            res.render('create')
+            res.render('create', {email: voterRow.email, creatorID: creatorID})
         })
 });
 
-app.post('/HERE_YOUR_POST_FORM', (req, res) => {
-    let table;
-    let valueObj;
-    poll.insertToDatabase(table, valueObj)
-        .then( () => {
-            res.redirect()
+app.post('/pollcreate/:creatorID', (req, res) => {
+
+    const creatorID = req.params.creatorID;
+    let friendsEmail = req.body.send_to;
+    let question = req.body.pollquestion;
+    let options = req.body.poll_opt;
+    let desc = req.body.opt_des;
+
+    // let htmlFriend = `<h2>Your Polland Question: ${question}</h2>
+    //             <p>Your friend make one poll and add you to vote: <a href="http://localhost:8080/poll/${questionID}/${voterID}">Vote now!</a></p>
+    // `
+    // let htmlCreator = `<h2>Your Polland Question: ${question}</h2>
+    //             <p>You create one poll and add your friends to vote</p>
+    //             <p>Vote here: <a href="http://localhost:8080/poll/${questionID}/${voterID}">Vote now!</a></p>
+    //             <p>See results here: <a href="http://localhost:8080/poll/${questionID}/result">See results!</a></p>
+    // `
+
+
+
+
+
+    // // insert friends into voter's table
+    let insertVoter = [];
+    if (Array.isArray(friendsEmail)) {
+        friendsEmail.forEach( function(email) {
+            insertVoter.push({
+            email: email,
+            encrypted_id: poll.generateRandomString(6)
+            })
         })
+        poll.insertToDatabase('voter', insertVoter);
+    } else {
+        insertVoter.push({
+            email: friendsEmail,
+            encrypted_id: poll.generateRandomString(6)
+            });
+        poll.insertToDatabase('voter', insertVoter);
+    };
+
+
+
+
+    // friendsEmail.forEach( function(email) {
+    //     insertVoter.push({
+    //         email: email,
+    //         encrypted_id: poll.generateRandomString(6)
+    //     })
+    // });
+    // poll.insertToDatabase('voter', insertVoter);
+
+
+    // insert question and option into tables
+    poll.insertToDatabase('question', {question: question, creator_id: creatorID})
+        .then(() => {
+            poll.query('id', 'question', {question: question, creator_id: creatorID})
+                .then( (res) => {
+                    let insertOption = [];
+                    let questionID = res[0]['id'];
+
+                    options.forEach( function(option, index) {
+                        insertOption.push({
+                        question_id: questionID,
+                        option: option,
+                        description: desc[index]
+                        });
+
+                    });
+                    poll.insertToDatabase('option', insertOption);
+                    return questionID
+                    })
+                .then((questionID)=> {
+                    //send email to creator
+                    poll.getVoterBy('id', creatorID)
+                        .then((res) => {
+                            console.log('res: ', res)
+                            console.log('creatorID: ', creatorID)
+                            let creatorEmail = res.email
+                            let htmlCreator = `<h2>Your Polland Question: ${question}</h2>
+                                <p>You create one poll and add your friends to vote</p>
+                                <p>Vote here: <a href="http://localhost:8080/poll/${questionID}/${creatorID}">Vote now!</a></p>
+                                <p>See results here: <a href="http://localhost:8080/poll/${questionID}/result">See results!</a></p>`
+                            mailGun.sendTheMail(creatorEmail, htmlCreator);
+                        });
+
+                    //send email to voter
+                    if (Array.isArray(friendsEmail)) {
+                        friendsEmail.forEach( function(friend) {
+                            poll.getVoterBy('email', friend)
+                                .then( (res) => {
+                                    let voterID = res.id;
+                                    let htmlFriend = `<h2>Your Polland Question: ${question}</h2>
+                                        <p>Your friend make one poll and add you to vote:
+                                        <a href="http://localhost:8080/poll/${questionID}/${voterID}">Vote now!</a></p>`
+
+                                    mailGun.sendTheMail(friend, htmlFriend);
+                                })
+                        });
+
+                    } else {
+                        poll.getVoterBy('email', friendsEmail)
+                            .then( (res) => {
+                                let voterID = res.id;
+                                let htmlFriend = `<h2>Your Polland Question: ${question}</h2>
+                                    <p>Your friend make one poll and add you to vote:
+                                    <a href="http://localhost:8080/poll/${questionID}/${voterID}">Vote now!</a></p>`
+
+                                mailGun.sendTheMail(friendsEmail, htmlFriend);
+                            })
+                    }
+                })
+        })
+
+    res.send('OK')
+
 })
 
 
@@ -84,10 +193,14 @@ app.post("create/submit", (req, res) => {
 
 
 // Rank Poll
-app.get("/poll/:pollID", (req, res) => {
-    res.render('rank');
+app.get("/poll/:pollID/:voterID", (req, res) => {
+    let optionArr = poll.getOption(req.params.pollID);
+    var tempVar = {
+        optionArr: optionArr
+    }
+    res.render('rank', tempVar);
 });
-app.post("/poll/:pollID/rank", (req,res) => {
+app.post("/poll/:pollID/:voterID/rank", (req,res) => {
     let tempArr = req.body.array;
     const resultArr = tempArr.reverse();
     console.log(resultArr);

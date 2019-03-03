@@ -35,7 +35,7 @@ module.exports = {
             from: 'lavi.ionas@gmail.com', // sender address
             to: recipients, // list of receivers
             subject: 'Subject of your email', // Subject line
-            text: text // plain text body
+            html: text // plain text body
         };
         transporter.sendMail(mailOptions, function(err, info) {
             if (err) console.log(err)

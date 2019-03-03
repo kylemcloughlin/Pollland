@@ -1,10 +1,23 @@
+<<<<<<< HEAD
 $(document).ready(function () {
+=======
+
+
+
+        $(document).ready(function () {
+>>>>>>> b0226acc5141a4fddbec7ca1e07f8fcd7bb300a5
     $('#pieChart').toggle();
     $('#polarChart').toggle();
     $('#radarChart').toggle();
     $('#doughnutChart').toggle();
+
     // $('#chart').toggle();
+<<<<<<< HEAD
     
+=======
+
+
+>>>>>>> b0226acc5141a4fddbec7ca1e07f8fcd7bb300a5
     $("#pieButton").click(function () {
         $("#pieChart").slideDown();
         $("#chart").slideUp();
@@ -13,10 +26,17 @@ $(document).ready(function () {
         $("#polarChart").slideUp();
         $.ajax("/poll/:questionID")
         .done((response) => {
+<<<<<<< HEAD
             console.log(response);
             chartBuilder(response, 'pie', "pieChart", pieChart);
         })
         
+=======
+
+         chartBuilder(response, 'pie',"pieChart", pieChart);
+    })
+
+>>>>>>> b0226acc5141a4fddbec7ca1e07f8fcd7bb300a5
     });
     
     $("#doughnutButton").click(function () {
@@ -75,8 +95,10 @@ function chartBuilder(data, type, element, chartType) {
     let polarChart = document.getElementById('polarChart').getContext('2d');
     let radarChart = document.getElementById('radarChart').getContext('2d');
     let doughnutChart = document.getElementById('doughnutChart').getContext('2d');
-    let pieChart = document.getElementById('pieChart').getContext('2d');
-    let newCharts = new Chart(chartType, {
+
+
+    let Charts = new Chart(chartType, {
+
         type: type,
         data: {
             labels: y,
@@ -103,6 +125,7 @@ function chartBuilder(data, type, element, chartType) {
         options: {
             responsive: false,
             maintainAspectRatio: false,
+<<<<<<< HEAD
         },
 
 
@@ -299,3 +322,16 @@ window.addEventListener("beforeunload", function (event) {
 
 //     },
 //     options: {}
+=======
+            },
+
+
+
+        }
+
+
+
+
+
+
+>>>>>>> b0226acc5141a4fddbec7ca1e07f8fcd7bb300a5
