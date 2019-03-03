@@ -48,7 +48,7 @@ app.post('/getEmail', (req, res) => {
                     // obj with voter filter by email
                     let voterRow = result;
                     // redirect to create poll
-                    res.json(voterRow);
+                    res.redirect('/create/' + voterRow.id)
                 })
         })
 });
@@ -62,13 +62,15 @@ app.get('/create/:voterID', (req, res) => {
     poll.getVoterBy('id', voterID)
         .then( (result) => {
             let voterRow = result;
-            res.render('create')
+            res.render('create', {email: voterRow.email})
         })
 });
 
 app.post('/pollcreate', (req, res) => {
     // let table;
     // let valueObj;
+    // let voterID = req.params.voterID;
+    console.log(voterID)
     console.log('emails: ', req.body.send_to)
     console.log('question: ', req.body.pollquestion)
     console.log('option: ', req.body.poll_opt)
