@@ -120,6 +120,7 @@ app.post("create/submit", (req, res) => {
 });
 // Rank Poll
 app.get("/poll/:pollID/:voterID", (req, res) => {
+
     res.render('rank');
 });
 app.post("/poll/:pollID/:voterID/rank", (req, res) => {
