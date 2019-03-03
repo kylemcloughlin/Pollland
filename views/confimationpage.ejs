@@ -10,8 +10,10 @@
         crossorigin="anonymous">
 
         <!-- internal css -->
-<link rel="stylesheet" href="/css/confrim.css" type="text/css" />
-<!-- <link rel="stylesheet" href="../css/confrim.css" type="text/css" /> -->
+
+        <link rel="stylesheet" href="/css/confrim.css" type="text/css" />
+        <link rel="stylesheet" href="/css/style.css" type="text/css" />
+        <!-- <link rel="stylesheet" href="../css/confrim.css" type="text/css" /> -->
     <!-- jquery cdm link -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous">
@@ -26,18 +28,19 @@
 
 <body>
     <% include ./partials/_header %>
-    <h1>Poll Confirmed</h1>
     <section>
+            <h1 id="confrimTitle">Poll Confirmed!</h1>
         <div>
-            <p> your poll has been susscessfully rendered! </p>
+            <p> Congratulations, your poll has been successfully rendered! </p>
             <p> An email has been sent to your the email address with an
                 link only you'll be able to containing a
-                link where you will be able to view the results</p>
-            <p>another email was sent to your friends email addresses you
-                provided where they will be able to vote </p>
-            <p> thanks for using Polland!</p>
+                link where you will be able to view the results!</p>
+            <p>Another email was sent to your friends email addresses you
+                provided where they will be able to vote! </p>
+            <p id="thnks"> Thanks for using Polland!</p>
         </div>
     </section>
+    <a href="/"> <button id="newChartButt" class="butt" type="button">Create another!</button></a>
 </body>
 
 </html>
