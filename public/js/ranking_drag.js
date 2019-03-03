@@ -1,15 +1,7 @@
 var app = {};
-console.log("js file opened");
 
 
-// const numberOfOptions = 5;
-
-const optionsArr = ["Meatballs", "Spaghetti", "Raveoili", "Cancer"];
-
-//Take in an array that will be displayed
-// const optionsArr = getOptions(url.params.questionID);
-
-
+//optionsArr
 
 var createOptions = function(optionsArr) {
     for (var x = 0; x < optionsArr.length; x++) {
