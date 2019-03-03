@@ -48,7 +48,7 @@ app.post('/getEmail', (req, res) => {
                     // obj with voter filter by email
                     let voterRow = result;
                     // redirect to create poll
-                    res.json(voterRow);
+                    res.redirect('/create/' + voterRow.id)
                 })
         })
 });
@@ -56,23 +56,55 @@ app.post('/getEmail', (req, res) => {
 
 
 // Create Poll
-app.get('/create/:voterID', (req, res) => {
-    let voterID = req.params.voterID;
+app.get('/create/:creatorID', (req, res) => {
+    let creatorID = req.params.creatorID;
 
-    poll.getVoterBy('id', voterID)
+    poll.getVoterBy('id', creatorID)
         .then( (result) => {
             let voterRow = result;
-            res.render('create')
+            res.render('create', {email: voterRow.email, creatorID: creatorID})
         })
 });
 
-app.post('/HERE_YOUR_POST_FORM', (req, res) => {
-    let table;
-    let valueObj;
-    poll.insertToDatabase(table, valueObj)
-        .then( () => {
-            res.redirect()
+app.post('/pollcreate/:creatorID', (req, res) => {
+
+    let creatorID = req.params.creatorID;
+    let friendEmail = req.body.send_to;
+    let question = req.body.pollquestion;
+    let options = req.body.poll_opt;
+    let desc = req.body.opt_des;
+
+
+
+    // insert friends into voter's table
+    let insertVoter = [];
+    friendEmail.forEach( function(email) {
+        insertVoter.push({
+            email: email,
+            encrypted_id: poll.generateRandomString(6)
         })
+    });
+    poll.insertToDatabase('voter', insertVoter);
+
+    poll.insertToDatabase('question', {question: question, creator_id: creatorID})
+        .then(() => {
+            poll.query('id', 'question', {question: question, creator_id: creatorID})
+                .then( (res_questionID) => {
+                    let insertOption = [];
+                    options.forEach( function(option, index) {
+                        insertOption.push({
+                        question_id: res_questionID,
+                        option: option,
+                        description: desc[index]
+                        });
+                        console.log(options);
+                        // poll.insertToDatabase('option', insertOption);
+                    });
+                })
+        })
+
+    res.send('OK')
+
 })
 
 

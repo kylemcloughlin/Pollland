@@ -16,7 +16,7 @@
             </script>
             <!-- <script type="text/javascript" src="/js/toggle.js"></script> -->
             <script type="text/javascript" src="/js/create_poll.js"></script>
-                    `
+
             <title>
                 New Poll
             </title>
@@ -25,70 +25,55 @@
 
 <body>
     <% include ./partials/_header %>
-    <div class="container my-5">
+<div class="container-fluid form-poll py-5">
+    <div class="container">
         <div class="row justify-content-md-center">
             <div class="col col-lg-12">
-            <form action="/poll/create" method="POST">
                 <h3 class="m-auto">CREATE YOUR POLL</h3>
-                <div class="form-group my-3">
-                    <h6>QUESTION</h6>
-                    <input type="text" class="form-control" name="poll" id="pollTopic" placeholder="What's on your mind?">
-                </div>
-                <h6>OPTIONS</h6>
-                <div class="input-group control-group my-2">
-                  <input type="text" name="addmore[]" class="form-control col-lg-4" placeholder="Option">
-                  <input type="text" name="addmore[]" class="form-control col-lg-8" placeholder="Description (optional)">
-                </div>
+                <form action="/pollcreate/<%= creatorID %>" method="POST">
 
-                <div class="input-group control-group after-add-more">
-                  <input type="text" name="addmore[]" class="form-control col-lg-4" placeholder="Option">
-                  <input type="text" name="addmore[]" class="form-control col-lg-8" placeholder="Description (optional">
-                  <div class="input-group-btn">
-                    <button class="btn btn-warning add-more" type="button"><strong>+</strong></button>
-                  </div>
-                </div>
-        </form>
+                    <div class="form-group my-3">
+                        <h6>QUESTION</h6>
+                        <input type="text" id="input" class="form-control" name="pollquestion" id="pollTopic" placeholder="What's on your mind?">
+                    </div>
+
+                    <h6>OPTIONS</h6>
+                    <div class="input-group control-group my-2">
+                        <input type="text" name="poll_opt" id="input" class="form-control col-lg-4 mr-1" placeholder="Option">
+                        <input type="text" name="opt_des" class="form-control col-lg-8" placeholder="Description (optional)">
+                    </div>
+
+                    <div class="input-group control-group after-add-more">
+                        <input type="text" name="poll_opt" id="input" class="form-control col-lg-4 mr-1" placeholder="Option">
+                        <input type="text" name="opt_des" class="form-control col-lg-8" placeholder="Description (optional">
+                        <div class="input-group-btn">
+                            <button class="btn btn-warning add-more" type="button"><strong>+</strong></button>
+                        </div>
+                    </div>
+
+                    <div class="input-group justify-content-md-center my-4">
+                        <h4>FRIENDS</h4>
+                        <div class="input-group email-group justify-content-md-center after-add-more-friend my-2">
+                            <input type="email" name="send_to" id="input" class="form-control col-lg-4" placeholder="Email">
+                            <div class="input-group-btn">
+                                <button class="btn btn-warning add-more-friend" type="button"><strong>+</strong></button>
+                            </div>
+                        </div>
+                    </div>
+<!--                     <script>
+                        bootstrapValidate('#input', 'email:Enter a valid email address');
+                    </script> -->
+                    <div class="form-group">
+                        <div class="justify-content-md-center m-auto">
+                            <button type="submit" class="btn btn-warning float-right">Submit</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
 
-<!--     <section id="main">
-        <h2 id="title">Create A Poll</h2>
-        <div id="form">
-            <form class="form-inline" action="/poll/create" method="POST">
-                <div id="error1" class="errorBanner"><p>WHOOPS, you've forgotten to enter a topic for your poll!</p>
-                </div>
-
-                <input id="pollTopic" class="pollinfo" type="text" name="poll" placeholder="whats on your mind?">
-
-                <div id="error2" class="errorBanner"><p>OPPS, you need to include at least 2 options for you poll!</p>
-                </div>
-
-                <input id="option1" class="pollinfo" type="text" name="polloption_1" placeholder="option 1..">
-                <input id="discription1" class="pollinfo" type="text" name="polloption_1_discription" placeholder="discription..">
-                <button id="disBut1" class="discriptionBut" type="button">Discription</button>
-                <input id="option2" class="pollinfo" type="text" name="polloption_2" placeholder="option 2..">
-                <input id="discription2" class="pollinfo" type="text" name="polloption_2_discription" placeholder="disctiption..">
-                <button id="disBut2" class="discriptionBut" type="button">discription</button>
-                <input class="pollinfo" type="text" name="polloption_3" placeholder="option 3..">
-                <input id="discription3" class="pollinfo" type="text" name="polloption_3_discription" placeholder="discription..">
-                <button id="disBut3" class="discriptionBut" type="button">discription</button>
-                <input class="pollinfo" type="text" name="polloption_4" placeholder="option 4..">
-                <input id="discription4" class="pollinfo" type="text" name="polloption_4__discription" placeholder="discription..">
-                <button id="disBut4" class="discriptionBut" type="button">discription</button>
-
-                <input id="inputEmail" type="email" class="pollinfo" placeholder="your @ here!" name="poll_email">
-                <input id="inputEmail2" type="email" class="pollinfo" placeholder="your @ here!" name="poll_email">
-                <input id="inputEmail3" type="email" class="pollinfo" placeholder="your @ here!" name="poll_email">
-                <button id="emailButt" class="discriptionBut" type="button">Extra Email?</button>
-
-                 <button id="emailbuttion" -->
-               <div id="submitDiv"><input id="subBut" type="submit" class="btn btn-primary" value="submit"></div>
-                <div id="error3" class="errorBanner"><p>WAIT!! you fogot to include an email addresses!</p></div>
-
-            </form>
-        </div>
-    </section> -->
 </body>
 
 </html>

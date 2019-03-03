@@ -33,3 +33,8 @@
   font-size: 3em;
   font-weight:bold;
 }
+
+.form-poll {
+  background-color: #FAFAFA;
+  height: 90vh;
+}
