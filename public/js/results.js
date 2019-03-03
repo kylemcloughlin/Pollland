@@ -6,7 +6,7 @@
     $('#polarChart').toggle();
     $('#radarChart').toggle();
     $('#doughnutChart').toggle();
-    $('#chart').toggle();
+    // $('#chart').toggle();
    
     $("#pieButton").click(function () {
         $("#pieChart").slideDown();
@@ -14,32 +14,32 @@
         $('#radarChart').slideUp();
         $('#doughnutChart').slideUp();
         $("#polarChart").slideUp();
-        $.ajax("/poll/data/1")
+        $.ajax("/poll/:questionID/")
         .done((response) => {
 
          chartBuilder(response, 'pie',"pieChart", pieChart);
     })
     
     });
-    $("#barButton").click(function () {
-        $("#chart").slideDown();
-        $('#radarChart').slideUp();
-        $("#pieChart").slideUp();
-        $("#doughnutChart").slideUp();
-        $("#polarChart").slideUp();
-        $.ajax("/poll/data/1")
-        .done((response) => {
-                console.log('GET RESPONSE', response);
-             chartBuilder(response, 'bar','chart', barChart);
-            })
-    });
+    // $("#barButton").click(function () {
+    //     $("#chart").slideDown();
+    //     $('#radarChart').slideUp();
+    //     $("#pieChart").slideUp();
+    //     $("#doughnutChart").slideUp();
+    //     $("#polarChart").slideUp();
+    //     $.ajax("/poll/:questionID/")
+    //     .done((response) => {
+    //             // console.log('GET RESPONSE', response);
+    //          chartBuilder(response, 'bar','chart', barChart);
+    //         })
+    // });
     $("#doughnutButton").click(function () {
         $("#doughnutChart").slideDown();
-        $("#chart").slideUp();
+        // $("#chart").slideUp();
         $("#pieChart").slideUp();
         $("#polarChart").slideUp();
         $('#radarChart').slideUp();
-        $.ajax("/poll/data/1")
+        $.ajax("/poll/:questionID/")
         .done((response) => {
         console.log('GET RESPONSE', response);
         chartBuilder(response, 'doughnut','doughnutChart', doughnutChart);
@@ -47,11 +47,11 @@
     });
     $("#radarButton").click(function () {
         $("#radarChart").slideDown();
-        $("#chart").slideUp();
+        // $("#chart").slideUp();
         $("#pieChart").slideUp();
         $("#doughnutChart").slideUp();
         $("#polarChart").slideUp();
-        $.ajax("/poll/data/1")
+        $.ajax("/poll/:questionID/")
         .done((response) => {
         console.log('GET RESPONSE', response);
         chartBuilder(response, 'radar','radarChart', radarChart);
@@ -59,11 +59,11 @@
     })
     $("#polarButton").click(function () {
         $("#polarChart").slideDown();
-        $("#chart").slideUp();
+        // $("#chart").slideUp();
         $("#pieChart").slideUp();
         $("#doughnutChart").slideUp();
         $("#radarChart").slideUp();
-        $.ajax("/poll/data/1")
+        $.ajax("/poll/:questionID/")
         .done((response) => {
         console.log('GET RESPONSE', response);
         chartBuilder(response, 'polarArea','polarChart', polarChart);
@@ -78,12 +78,12 @@ function chartBuilder(data, type, element, chartType) {
     for (tin of data){
     y.push(tin.option)
     x.push(tin.points);
-    let barChart = document.getElementById('chart').getContext('2d');
+    // let barChart = document.getElementById('chart').getContext('2d');
 }   let polarChart = document.getElementById('polarChart').getContext('2d');
     let radarChart = document.getElementById('radarChart').getContext('2d');
     let doughnutChart = document.getElementById('doughnutChart').getContext('2d');
-    
-    let Charts = new Chart(chartType, {
+    let pieChart = document.getElementById('pieChart').getContext('2d');
+    let newCharts = new Chart(chartType, {
         type: type,
         data: {
             labels: y,
@@ -108,12 +108,12 @@ function chartBuilder(data, type, element, chartType) {
 
         },
         options: {
-            legend: {
-                display: false
+            responsive: false,
+            maintainAspectRatio: false,
             },
         
             
-        }
+        
 
 
 
@@ -276,7 +276,7 @@ function chartBuilder(data, type, element, chartType) {
 
     // });
 
-     // let barChart = document.getElementById('chart').getContext('2d');
+    //  let barChart = document.getElementById('chart').getContext('2d');
     // let Chart1 = new Chart(barChart, {
     //     type: 'bar',
     //     data: {
