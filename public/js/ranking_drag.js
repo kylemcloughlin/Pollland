@@ -1,32 +1,17 @@
 var app = {};
 console.log("js file opened");
-const numberOfOptions = 5;
-const data = {
-    "1": {
-        id: "1",
-        text: "Pizza",
-    },
-    "2": {
-        id: "2",
-        text: "Sushi",
-    },
-    "3": {
-        id: "3",
-        text: "Burito",
-    },
-    "4": {
-        id: "4",
-        text: "Raveoli",
-    },
-    "5": {
-        id: "5",
-        text: "Spaghetti",
-    },
-}
-var createOptions = function(data) {
-    for (var x = 1; x < numberOfOptions + 1; x++) {
-        var li = $('<li>' + data[x].text + '</li>');
-        var rank = $('<li>' + data[x].id + '</li>');
+
+
+// const numberOfOptions = 5;
+
+// const optionsArr = getOptions(url.params.questionID);
+
+
+
+var createOptions = function(optionsArr) {
+    for (var x = 1; x < optionsArr.length + 1; x++) {
+        var li = $('<li>' + optionsArr[x].text + '</li>');
+        var rank = $('<li>' + optionsArr[x].id + '</li>');
         $('ul.wishlist').append(li);
         $('.rank').append(rank);
     }

@@ -1,13 +1,13 @@
 
-    
-        
+
+
         $(document).ready(function () {
     $('#pieChart').toggle();
     $('#polarChart').toggle();
     $('#radarChart').toggle();
     $('#doughnutChart').toggle();
     $('#chart').toggle();
-   
+
     $("#pieButton").click(function () {
         $("#pieChart").slideDown();
         $("#chart").slideUp();
@@ -19,7 +19,7 @@
 
          chartBuilder(response, 'pie',"pieChart", pieChart);
     })
-    
+
     });
     $("#barButton").click(function () {
         $("#chart").slideDown();
@@ -82,7 +82,7 @@ function chartBuilder(data, type, element, chartType) {
 }   let polarChart = document.getElementById('polarChart').getContext('2d');
     let radarChart = document.getElementById('radarChart').getContext('2d');
     let doughnutChart = document.getElementById('doughnutChart').getContext('2d');
-    
+
     let Charts = new Chart(chartType, {
         type: type,
         data: {
@@ -111,8 +111,8 @@ function chartBuilder(data, type, element, chartType) {
             legend: {
                 display: false
             },
-        
-            
+
+
         }
 
 
@@ -142,7 +142,7 @@ function chartBuilder(data, type, element, chartType) {
     //             borderColor: '#777',
     //             hoverBorderWidth: 2,
     //             hoverBorderColor: '#000'
-                        
+
     //         }]
 
     //     },
@@ -172,12 +172,12 @@ function chartBuilder(data, type, element, chartType) {
     //             borderColor: '#777',
     //             hoverBorderWidth: 2,
     //             hoverBorderColor: '#000'
-                        
 
 
 
 
-                
+
+
     //         }]
 
     //     },
@@ -236,7 +236,7 @@ function chartBuilder(data, type, element, chartType) {
     //             borderColor: '#777',
     //             hoverBorderWidth: 2,
     //             hoverBorderColor: '#000'
-                        
+
     //         }]
 
     //     },
@@ -266,7 +266,7 @@ function chartBuilder(data, type, element, chartType) {
     //             borderColor: '#777',
     //             hoverBorderWidth: 2,
     //             hoverBorderColor: '#000'
-                        
+
     //         }]
 
     //     },
@@ -296,7 +296,7 @@ function chartBuilder(data, type, element, chartType) {
     //             borderColor: '#777',
     //             hoverBorderWidth: 2,
     //             hoverBorderColor: '#000'
-                        
+
     //         }]
 
     //     },
