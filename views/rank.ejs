@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
             <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+             <link href="/css/layout.css" rel="stylesheet">
                 <meta content="initial-scale=1, maximum-scale=1" name="viewport">
                     <link href="/css/ranking.css" rel="stylesheet">
                         <!-- Creating -->
@@ -37,19 +38,27 @@
                     <tr class="table">
                         <th>
                             <ul class="rank">
+                            <% optionsArr.forEach( function(element, index) { %>
+                                <li><%=(index+1)%></li>
+                            <%});%>
                             </ul>
                         </th>
                         <th>
                             <ul class="wishlist connected" id="ul1">
+                            <% optionsArr.forEach( function(element) { %>
+                                <li><%=element%></li>
+                            <%});%>
                             </ul>
                         </th>
                     </tr>
                 </table>
             </div>
+
+<p id="voterID"><%= voterID %></p>
+<p id="pollID"><%= pollID %></p>
+
             <div id="submit">
-                <button id="makeNewArray">
-                    Submit
-                </button>
+                <button id="makeNewArray">Submit</button>
             </div>
         </main>
     </body>

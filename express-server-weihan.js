@@ -4,6 +4,7 @@ const ENV = 'development';
 const bodyParser = require("body-parser");
 const mailGun = require("./jScript/mailGun.js");
 
+const rankPoll = require("./lib/rank_poll");
 
 const knexConfig = require('./knexfile');
 const knex = require('knex')(knexConfig[ENV]);
@@ -76,19 +77,6 @@ app.post('/pollcreate/:creatorID', (req, res) => {
     let options = req.body.poll_opt;
     let desc = req.body.opt_des;
 
-    // let htmlFriend = `<h2>Your Polland Question: ${question}</h2>
-    //             <p>Your friend make one poll and add you to vote: <a href="http://localhost:8080/poll/${questionID}/${voterID}">Vote now!</a></p>
-    // `
-    // let htmlCreator = `<h2>Your Polland Question: ${question}</h2>
-    //             <p>You create one poll and add your friends to vote</p>
-    //             <p>Vote here: <a href="http://localhost:8080/poll/${questionID}/${voterID}">Vote now!</a></p>
-    //             <p>See results here: <a href="http://localhost:8080/poll/${questionID}/result">See results!</a></p>
-    // `
-
-
-
-
-
     // // insert friends into voter's table
     let insertVoter = [];
     if (Array.isArray(friendsEmail)) {
@@ -106,18 +94,6 @@ app.post('/pollcreate/:creatorID', (req, res) => {
             });
         poll.insertToDatabase('voter', insertVoter);
     };
-
-
-
-
-    // friendsEmail.forEach( function(email) {
-    //     insertVoter.push({
-    //         email: email,
-    //         encrypted_id: poll.generateRandomString(6)
-    //     })
-    // });
-    // poll.insertToDatabase('voter', insertVoter);
-
 
     // insert question and option into tables
     poll.insertToDatabase('question', {question: question, creator_id: creatorID})
@@ -181,7 +157,6 @@ app.post('/pollcreate/:creatorID', (req, res) => {
         })
 
     res.send('OK')
-
 })
 
 
@@ -194,18 +169,29 @@ app.post("create/submit", (req, res) => {
 
 // Rank Poll
 app.get("/poll/:pollID/:voterID", (req, res) => {
-    let optionArr = poll.getOption(req.params.pollID);
-    var tempVar = {
-        optionArr: optionArr
-    }
-    res.render('rank', tempVar);
+    let questionID = req.params.pollID;
+    let voterID = req.params.voterID;
+    let options = [];
+
+    poll.getOption(questionID)
+        .then( (result) => {
+            result.forEach( function(option) {
+                options.push(option.option);
+            });
+            res.render('rank', {optionsArr: options, pollID: questionID, voterID:voterID});
+        })
 });
+
 app.post("/poll/:pollID/:voterID/rank", (req,res) => {
+    let questionID = req.body.pollID;
+    let voterID = req.body.voterID;
     let tempArr = req.body.array;
-    const resultArr = tempArr.reverse();
-    console.log(resultArr);
+    console.log(req.body)
+
 
 });
+
+
 app.get("/poll/:pollID/results", (req, res) => {
     //logic to check if user has access to the results
     console.log("im in");

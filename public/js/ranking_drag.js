@@ -1,18 +1,5 @@
 var app = {};
 
-
-//optionsArr
-
-var createOptions = function(optionsArr) {
-    for (var x = 0; x < optionsArr.length; x++) {
-        var li = $('<li>' + optionsArr[x] + '</li>');
-        var rank = $('<li>' + (x+1) + '</li>');
-        $('ul.wishlist').append(li);
-        $('.rank').append(rank);
-    }
-
-}
-
 app.init = function() {
     // sortable option//
     $('ul.wishlist').sortable({
@@ -27,14 +14,14 @@ app.init = function() {
         for (var i = 0; i < arrLi1.length; i++) {
             arr1.push(arrLi1[i].innerHTML);
         }
+
+        let pollID = document.getElementById("pollID").innerHTML;
+        let voterID = document.getElementById("voterID").innerHTML;
+
         alert("submitted");
-        $.post("/poll/pollID/voterID/rank", {array: arr1});
+        $.post("/poll/pollID/voterID/rank", {array: arr1, pollID: pollID, voterID: voterID});
     };
 };
 $(function() {
     app.init();
-});
-$(document).ready(() => {
-    // renderOptions(data);
-    createOptions(optionsArr);
 });
