@@ -29,6 +29,13 @@
     height: 90vh;
 }
 
+.backgroundLanding-rank {
+    background-color: #fafafa;
+    background-image: url(../img/coin.jpg);
+    background-size: cover;
+    height: 90vh;
+}
+
 .banner-text {
   color: black;
   font-size: 3em;
@@ -50,4 +57,13 @@
 .btn.btn-primary:focus {
   background-color: ##414141 !important;
   color: #ffc107
+}
+
+.table-bg {
+  background-color: rgba(250, 250, 250, 0.75);
+
+}
+
+.table td, .table th {
+  border-top: 1px solid #fff;
 }

@@ -1,51 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
+        <meta charset="utf-8" content="initial-scale=1, maximum-scale=1" name="viewport">
             <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
-             <link href="/css/layout.css" rel="stylesheet">
-                <meta content="initial-scale=1, maximum-scale=1" name="viewport">
-                    <link href="/css/ranking.css" rel="stylesheet">
-                    <link rel="stylesheet" href="/css/style.css" type="text/css" />
-                    <!-- Creating -->
-                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
-                        </script>
-                        <!-- Dragging -->
-                        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js">
-                        </script>
-                        <script src="/js/ranking_drag.js">
-                        </script>
-                    </link>
-                </meta>
-            </link>
+            <!-- <link href="/css/layout.css" rel="stylesheet"> -->
+            <link href="/css/style.css" rel="stylesheet">
+            <!-- <meta content="initial-scale=1, maximum-scale=1" name="viewport"> -->
+            <!-- <link href="/css/ranking.css" rel="stylesheet"> -->
+            <link rel="stylesheet" href="/css/style.css" type="text/css" />
+            <!-- Creating -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+            <!-- Dragging -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+            <script src="/js/ranking_drag.js"></script>
+            <!-- </link> -->
+            <!-- </meta> -->
+            <!-- </link> -->
+            <title>
+                Polland - Decision Maker
+            </title>
         </meta>
     </head>
     <body id="body">
         <main>
             <% include ./partials/_header.ejs %>
-            <div class="wrapper container">
-            <div id="titleBox">    <h1 class="heading">
-                    Your options
-                </h1></div>
-                <table>
-                    <tr class="table">
+            <div class="backgroundLanding-rank d-flex align-items-center">
+            <div class="wrapper container col-md-6">
+            <div id="titleBox">
+                <h4 class="text-white font-weight-bold">With great power comes great responsibility...</h4>
+            </div>
+            <div class="d-none">
+                <p id="voterID"><%= voterID %></p>
+                <p id="pollID"><%= pollID %></p>
+            </div>
+                <table class="table">
+                    <tr class="table-bg">
                         <th class="headers">
-                            Rank
+                            <h4 class="text-center font-weight-bold">Rank</h4>
                         </th>
                         <th class="headers">
-                            Options
+                            <h4 class="font-weight-bold">Options</h4>
                         </th>
                     </tr>
-                    <tr class="table">
+                    <tr class="table-bg">
                         <th>
-                            <ul class="rank">
+                            <ul class="rank list-unstyled">
                             <% optionsArr.forEach( function(element, index) { %>
-                                <li><%=(index+1)%></li>
+                                <li class="text-center"><%=(index+1)%></li>
                             <%});%>
                             </ul>
                         </th>
                         <th>
-                            <ul class="wishlist connected" id="ul1">
+                            <ul class="wishlist connected list-unstyled" id="ul1">
                             <% optionsArr.forEach( function(element) { %>
                                 <li><%=element%></li>
                             <%});%>
@@ -53,14 +59,18 @@
                         </th>
                     </tr>
                 </table>
+                            <div id="submit">
+                <button id="makeNewArray" class="btn btn-danger float-right text-white">Submit</button>
             </div>
-
+            </div>
+            </div>
+<!--
 <p id="voterID"><%= voterID %></p>
-<p id="pollID"><%= pollID %></p>
+<p id="pollID"><%= pollID %></p> -->
 
-            <div id="submit">
+<!--             <div id="submit">
                 <button id="makeNewArray">Submit</button>
-            </div>
+            </div> -->
         </main>
     </body>
 </html>
