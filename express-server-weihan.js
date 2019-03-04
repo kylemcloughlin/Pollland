@@ -10,6 +10,8 @@ const knexConfig = require('./knexfile');
 const knex = require('knex')(knexConfig[ENV]);
 const poll = require('./lib/poll')(knex);
 
+const cookieParser = require('cookie-parser')
+
 const app = express();
 app.use(bodyParser.urlencoded({
   extended: true
@@ -24,7 +26,18 @@ app.set('view engine', 'ejs');
  * MIDDLEWARE
  */
 
+// function seeCookies (req, res, next) {
+// console.log("cookies running:", req.headers.cookie);
+//  next();
+// };
 
+// app.use(seeCookies);
+// app.use(express.static(__dirname + '/public'));
+// app.set('view engine', 'ejs');
+app.use(cookieParser('randomstring'));
+// app.use(bodyParser.urlencoded({
+//     extended: true
+// }));
 
 
 
@@ -156,7 +169,7 @@ app.post('/pollcreate/:creatorID', (req, res) => {
                 })
         })
 
-    res.send('OK')
+    res.redirect('/poll/create/confirm')
 })
 
 
@@ -166,6 +179,31 @@ app.post("create/submit", (req, res) => {
     redirect('confirm');
 });
 
+
+app.get("/poll/create/confirm", (req, res) => {
+    // console.log("/poll/create/confirm");
+    res.render("confimationpage")
+})
+
+
+app.get("/poll/:questionID", (req, res) => {
+    let ID = req.cookies.questionID;
+    console.log(req.body);
+    poll.getPoints(ID)
+        .then((result) => {
+            res.json(result);
+        })
+
+
+    })
+    app.get("/poll/:questionID/result", (req, res) => {
+        let ID = req.params.questionID;
+        res.cookie("questionID", ID, { maxAge: 60000});
+        // console.log("no render", ID)
+
+
+        res.render('results')
+})
 
 // Rank Poll
 app.get("/poll/:pollID/:voterID", (req, res) => {
@@ -210,29 +248,6 @@ app.post("/poll/:pollID/:voterID/rank", (req,res) => {
 });
 
 
-app.get("/poll/:pollID/results", (req, res) => {
-    //logic to check if user has access to the results
-    console.log("im in");
-    if (true) {
-        var tempArr = {
-          array: resultArr,
-        }
-        res.render(`results`, tempArr);
-    } else {
-        console.log("You do not have acess to the resutls");
-    }
-});
-
-
-// Poll Results
-app.get('/poll/:questionID/result', (req, res) => {
-    let questionID = req.params.questionID;
-
-    poll.getPoints(questionID)
-        .then( (result) => {
-            res.json(result)
-        })
-})
 
 
 

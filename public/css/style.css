@@ -23,8 +23,9 @@
 
 .backgroundLanding {
     background-color: #fafafa;
-    background-image: url(../img/poll_bg.png);
-    background-size: cover;
+    /*background-image: url(../img/poll_bg.png);*/
+    background-image: url(../img/choice.jpg);
+    background-size: 100% 100%;
     height: 90vh;
 }
 
@@ -35,6 +36,18 @@
 }
 
 .form-poll {
-  background-color: #FAFAFA;
+  background-color: #f8f9fa;
   height: 90vh;
+}
+
+.form-control:focus {
+  border-color: #ffc107;
+  box-shadow: 0 0 0 0.2rem rgba(250, 250, 250, 1);
+}
+
+.btn.btn-primary:active,
+.btn.btn-primary:hover,
+.btn.btn-primary:focus {
+  background-color: ##414141 !important;
+  color: #ffc107
 }
