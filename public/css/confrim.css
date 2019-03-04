@@ -1,3 +1,54 @@
-h1 {
-    color : blueviolet; 
+#confrimTitle {
+    padding-left: 29%;
+    color: black;
+    
+}
+
+
+body {
+    background-color: #fafafa;
+    background-image: url(../img/poll_bg.png);
+    background-size: cover;
+    /* display: table; */
+    height: 90vh;
+}
+
+
+section {
+    background-color: #ffc107;
+    width: 50%;
+    height: 50%;
+    margin-left: 25%;
+    margin-top: 4%;
+    border: 2px solid #ffd864;
+    border-radius: 6px;
+    display: table;
+}
+
+#thnks {
+    padding-left: 26%;
+}
+
+
+div {
+    padding-left: 20%;
+    padding-right: 20%; 
+    font-weight: bolder;
+}
+
+#newChartButt {
+
+    width: 19%;  
+    padding: 2%;
+    border: 2px solid #ffd864;
+    border-radius: 6px;
+    background: #ffc107;
+    margin-left: 40.5%;
+    margin-top: 1%;
+    font-weight: bolder;
+}
+#newChartButt:hover {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
 }

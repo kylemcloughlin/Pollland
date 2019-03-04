@@ -3,13 +3,18 @@
      
         width: 19%;  
         padding: 2%;
-        border: 2px solid #ffc107;
+        border: 2px solid #ffd864;
         border-radius: 6px;
         background: #ffc107;
         margin-left: 19%;
-        margin-top: 1%
+        margin-top: 1%;
+        font-weight: bolder;
     }
-
+    .butt:hover {
+        color: #fff;
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
 #cont {
     top: 8px;
 left: 8px;
