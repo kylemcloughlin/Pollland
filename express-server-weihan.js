@@ -185,8 +185,26 @@ app.get("/poll/:pollID/:voterID", (req, res) => {
 app.post("/poll/:pollID/:voterID/rank", (req,res) => {
     let questionID = req.body.pollID;
     let voterID = req.body.voterID;
-    let tempArr = req.body.array;
-    console.log(req.body)
+    let points = req.body.array.reverse();
+    // let insertPoints = [];
+
+    points.forEach( function(point, index) {
+        poll.query('id', 'option', {option: point, question_id: questionID})
+            .then( (result) => {
+                insertPoint = {
+                    question_id: questionID,
+                    option_id: result[0]['id'],
+                    voter_id: voterID,
+                    point: index
+                }
+                poll.insertToDatabase('vote', insertPoint)
+            })
+    });
+
+
+
+
+
 
 
 });
