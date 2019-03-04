@@ -1,7 +1,7 @@
 
 .butt {
-     
-        width: 19%;  
+
+        width: 19%;
         padding: 2%;
         border: 2px solid #ffd864;
         border-radius: 6px;
@@ -35,7 +35,7 @@ canvas {
 
 body {
     background-color: #fafafa;
-    background-image: url(../img/poll_bg.png);
+    /*background-image: url(../img/poll_bg.png);*/
     background-size: cover;
     height: 90vh;
 }

@@ -4,26 +4,21 @@
 <head>
     <meta charset="UTF-8">
 
-
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
         crossorigin="anonymous">
     <!-- internal css -->
-    <link rel="stylesheet" href="/css/results.css" type="text/css"/>
+    <!-- <link rel="stylesheet" href="/css/results.css" type="text/css"/> -->
     <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet">
 
     <!-- APP CSS -->
     <link rel="stylesheet" href="/css/style.css" type="text/css" />
     <!-- jquery cdm link -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous">
-    </script>
+    crossorigin="anonymous"></script>
     <!-- chart.js cdm link -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js">
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
     <!-- internal js -->
     <script type="text/javascript" src="/js/results.js"></script>
-    
 
     <title>Results</title>
 
@@ -32,33 +27,33 @@
 
 <body>
     <% include ./partials/_header %>
-   <div id ="resHead"><h2>Results</h2></div>
-    <!--  -->
-  
+        <div class="backgroundLanding-result d-flex align-items-center">
+            <div class="row container-fluid">
+                <div class="container d-flex justify-content-center">
+                    <h1 class="d-flex justify-content-center font-weight-bold">
+                        RESULTS
+                    </h1>
+                </div>
+                <div id="cont" class="container d-flex justify-content-center my-4">
+                    <!-- <canvas id='chart' width="400" height="400"></canvas> -->
+                    <canvas id='pieChart' width="400" height="400"></canvas>
+                    <canvas id='doughnutChart' width="400" height="400"></canvas>
+                    <canvas id='radarChart' width="400" height="400"></canvas>
+                    <canvas id='polarChart' width="400" height="400"></canvas>
+                </div>
 
+                <div id="buttonCon" class="container d-flex justify-content-center">
+                    <!-- <button id="barButton" class="butt" type="button">bar</button> -->
+                    <button id="pieButton" class="butt btn btn-warning mx-2" type="button">pie</button>
+                    <button id="radarButton" class="butt btn btn-warning mx-2" type="button">radar</button>
+                    <button id="doughnutButton" class="butt btn btn-warning mx-2" type="button">doughnut</button>
+                    <button id="polarButton" class="butt btn btn-warning mx-2" type="button">polar</button>
+                </div>
 
+            </div>
+        </div>
 
-
-
-    <!--  -->
-    <div id="cont" class="container">
-        <!-- <canvas id='chart' width="400" height="400"></canvas> -->
-        <canvas id='pieChart' width="400" height="400"></canvas>
-        <canvas id='doughnutChart' width="400" height="400"></canvas>
-        <canvas id='radarChart' width="400" height="400"></canvas>
-        <canvas id='polarChart' width="400" height="400"></canvas>
-  
-
-    </div>
- <div id="buttonCon"> 
-     <!-- <button id="barButton" class="butt" type="button">bar</button> -->
-    <button id="pieButton" class="butt" type="button">pie</button>
-    <button id="radarButton" class="butt" type="button">radar</button>
-    <button id="doughnutButton" class="butt" type="button">doughnut</button>
-    <button id="polarButton" class="butt" type="button">polar</button>
-    </div>
 </body>
-
 
 </html>
 
