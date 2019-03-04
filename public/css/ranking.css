@@ -12,7 +12,7 @@ body {
     margin: 0;
 }
 main {
-    background-color: #d2dbe0;
+    /* background-color: #d2dbe0; */
 }
 .heading {
     font-size: 30px;
@@ -24,6 +24,8 @@ table {
     margin: 0 auto;
     border-radius: 5px;
     border: 1px solid grey;
+    background-color: white;
+    border-radius: 6px;
 }
 
 #submit {
@@ -35,11 +37,40 @@ li {
 }
 
 button {
-    margin: 10px;
-    width: 75px;
-
+    /* margin: 10px; */
+    /* width: 75px; */
+    width: 19%;  
+    padding: 2%;
+    border: 2px solid #ffd864;
+    border-radius: 6px;
+    background: #ffc107;
+    /* margin-left: 19%; */
+    margin-top: 1%;
+    font-weight: bolder;
 }
 
 button:hover {
-    background-color: grey;
+         color: #fff;
+        background-color: #dc3545;
+        border-color: #dc3545;
 }
+       
+body {
+            background-color: #fafafa;
+            background-image: url(../img/poll_bg.png);
+            background-size: cover;
+            height: 90vh;
+        }   
+
+#titleBox {
+    width: 37%;
+    padding: 1%;
+    border: 2px solid #ffd864;
+    border-radius: 6px;
+    background: #ffc107;
+    margin-left: 31.5%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    font-weight: bolder;
+        
+        }
